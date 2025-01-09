@@ -1,5 +1,5 @@
 $ssnPattern = "\b\d{3}-\d{2}-\d{4}\b"
-#ccPattern = "\b\d{4}-\d{4}-\d{4}-\d{4}\b"
+$ccPattern = "\b\d{4}-\d{4}-\d{4}-\d{4}\b"
 $hostname = hostname
 $results = ""
 $directory = "C:\Temp"
@@ -24,6 +24,6 @@ get-ChildItem -Path $directory -Recurse -File | ForEach-Object {
         if (-not [System.Diagnostics.EventLog]::SourceExists($source)){
             New-EventLog -LogName Application -Source $source
         }
-        Write-EventLog -LogName Application -Source $source -EventId 10001 -EntryType FailureAudit -Message $results -Computernae $hostname
+        Write-EventLog -LogName Application -Source $source -EventId 10001 -EntryType FailureAudit -Message $results -Computername $hostname
     }
 }
